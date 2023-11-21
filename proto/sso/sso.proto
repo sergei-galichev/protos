@@ -1,0 +1,45 @@
+syntax = "proto3";
+package auth;
+option go_package = "galichev.sso.v1;ssov1";
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse){};
+  rpc Login (LoginRequest) returns (LoginResponse){};
+  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse){};
+}
+
+message RegisterRequest {
+  // Email of the user to register
+  string email = 1;
+  // Password of the user to register
+  string password = 2;
+}
+
+message RegisterResponse {
+  // ID of the registered user
+  int64 user_id = 1;
+}
+
+message LoginRequest {
+  // Email of the user to login
+  string email = 1;
+  // Password of the user to login
+  string password = 2;
+  // Application ID to login
+  int32 app_id = 3;
+}
+
+message LoginResponse {
+  // Authentication token of the logged in user
+  string token = 1;
+}
+
+message IsAdminRequest {
+  // User ID to validate
+  int64 user_id = 1;
+}
+
+message IsAdminResponse {
+  // Indicates whether the user is an admin
+  bool is_admin = 1;
+}
