@@ -1,4 +1,4 @@
-module go-auth-service/protos
+module github.com/sergei-galichev/protos
 
 go 1.21.3
 
